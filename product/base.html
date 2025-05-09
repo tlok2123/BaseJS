@@ -26,17 +26,46 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link rounded-3 fs-5" aria-current="page" href="#">Trang chủ</a>
+            <a class="nav-link rounded-3 fs-5" aria-current="page" href="#" data-i18n="home">Trang chủ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fs-5" href="#">Giới thiệu</a>
+            <a class="nav-link fs-5" href="#" data-i18n="about">Giới thiệu</a>
           </li>
           <li>
-            <a class="nav-link fs-5" href="#" onclick="openCartModal()">Giỏ hàng (<span id="cartCount">0</span>)</a>
+            <a class="nav-link fs-5" href="#" onclick="openCartModal()" data-i18n="cart">Giỏ hàng (<span
+                id="cartCount">0</span>)</a>
           </li>
         </ul>
-        <div>
-          <h5>Đăng nhập</h5>
+        <div class="d-flex align-items-center gap-3">
+          <div>
+            <h5 class="nav-link fs-5 m-0" data-i18n="login">Đăng nhập</h5>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-language dropdown-toggle" type="button" id="languageDropdown"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://flagcdn.com/w20/vn.png" alt="Ngôn ngữ hiện tại" id="currentLanguageFlag">
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2" href="#" onclick="changeLanguage('vi')">
+                  <img src="https://flagcdn.com/w20/vn.png" alt="Tiếng Việt"> Tiếng Việt
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2" href="#" onclick="changeLanguage('en')">
+                  <img src="https://flagcdn.com/w20/us.png" alt="English"> English
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2" href="#" onclick="changeLanguage('fr')">
+                  <img src="https://flagcdn.com/w20/fr.png" alt="Français"> Français
+                </a>
+              </li>
+            </ul>
+          </div>
+          <button class="btn btn-dark-mode" onclick="toggleDarkMode()" aria-label="Chuyển chế độ tối">
+            <span class="dark-mode-icon"></span>
+          </button>
         </div>
       </div>
     </div>
@@ -46,11 +75,11 @@
   <!-- PRODUCT SECTION -->
   <div class="container pt-5">
     <div class="row d-flex align-items-center mb-4 justify-content-between">
-      <h3 class="text-center">Top sản phẩm hot</h3>
+      <h3 class="text-center" data-i18n="top_products">Top sản phẩm hot</h3>
     </div>
     <div class="mb-4">
       <input class="form-control find-product" type="search" placeholder="Tìm kiếm sản phẩm" aria-label="Search"
-        style="height: 40px; width: 100%">
+        style="height: 40px; width: 100%" data-i18n-placeholder="search_placeholder">
     </div>
     <div class="row" id="productContainer"></div>
   </div>
@@ -60,20 +89,19 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="cartModalLabel">Giỏ hàng</h5>
+          <h5 class="modal-title" id="cartModalLabel" data-i18n="cart">Giỏ hàng</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
         </div>
         <div class="modal-body" id="cartModalBody">
-          <!-- Nội dung giỏ hàng sẽ được cập nhật ở đây -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-          <button type="button" class="btn btn-primary" id="checkoutBtn" style="display: none;">Thanh toán</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="close">Đóng</button>
+          <button type="button" class="btn btn-primary" id="checkoutBtn" style="display: none;"
+            data-i18n="checkout">Thanh toán</button>
         </div>
       </div>
     </div>
   </div>
-
 
   <!-- FOOTER -->
   <hr class="mt-4">
@@ -81,30 +109,31 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <h5>🛒 ShopSiêuCấp</h5>
-          <p>Chuyên cung cấp sản phẩm công nghệ, phụ kiện chính hãng, giá tốt mỗi ngày.</p>
+          <h5 data-i18n="footer_title">🛒 ShopSiêuCấp</h5>
+          <p data-i18n="footer_description">Chuyên cung cấp sản phẩm công nghệ, phụ kiện chính hãng, giá tốt mỗi ngày.
+          </p>
         </div>
         <div class="col-md-4">
-          <h5>Liên kết nhanh</h5>
+          <h5 data-i18n="quick_links">Liên kết nhanh</h5>
           <ul class="list-unstyled">
-            <li><a href="#">Trang chủ</a></li>
-            <li><a href="#">Sản phẩm</a></li>
-            <li><a href="#">Chính sách đổi trả</a></li>
-            <li><a href="#">Liên hệ</a></li>
+            <li><a class="text-dark" href="#" data-i18n="home">Trang chủ</a></li>
+            <li><a class="text-dark" href="#" data-i18n="products">Sản phẩm</a></li>
+            <li><a class="text-dark" href="#" data-i18n="returns_policy">Chính sách đổi trả</a></li>
+            <li><a class="text-dark" href="#" data-i18n="contact">Liên hệ</a></li>
           </ul>
         </div>
         <div class="col-md-4">
-          <h5>Liên hệ</h5>
-          <p>Email: support@shopsieucap.vn</p>
-          <p>Hotline: 1800 1234</p>
-          <p>
+          <h5 data-i18n="contact">Liên hệ</h5>
+          <p data-i18n="email">Email: support@shopsieucap.vn</p>
+          <p data-i18n="hotline">Hotline: 1800 1234</p>
+          <p data-i18n="follow_us">
             Theo dõi chúng tôi:
             <a href="#" class="text-dark ms-2">Facebook</a> |
             <a href="#" class="text-dark">Instagram</a>
           </p>
         </div>
       </div>
-      <p class="text-center small">© 2025 ShopSiêuCấp. All rights reserved.</p>
+      <p class="text-center small" data-i18n="copyright">© 2025 ShopSiêuCấp. All rights reserved.</p>
     </div>
   </footer>
   <!-- END FOOTER -->
@@ -114,7 +143,8 @@
     crossorigin="anonymous"></script>
   <script src="../cart.js"></script>
   <script src="../product.js"></script>
-
+  <script src="../viewmode.js"></script>
+  <script src="../language.js"></script>
 </body>
 
 </html>
